@@ -3,6 +3,7 @@ import {
   App,
   Button,
   Card,
+  Checkbox,
   DatePicker,
   Form,
   Input,
@@ -60,6 +61,8 @@ const NewRegisterationForm = () => {
         user_mobile: member.mobile,
         user_email: member.email,
         user_status: member.is_active,
+        user_card_print: member.user_card_print == "Yes" ? true : false,
+        user_card_re_print: member.user_card_re_print == "Yes" ? true : false,
       };
       setInitialData(mappedData);
 
@@ -128,6 +131,15 @@ const NewRegisterationForm = () => {
       );
       formData.append("user_member_type", values.user_member_type || "");
       formData.append("user_cat", values.user_cat || "");
+      formData.append("user_remarks", values.user_remarks || "");
+      formData.append(
+        "user_card_print",
+        values.user_card_print ? "Yes" : "No" || ""
+      );
+      formData.append(
+        "user_card_re_print",
+        values.user_card_re_print ? "Yes" : "No" || ""
+      );
       formData.append(
         "user_status",
         values.user_status ? "active" : "inactive"
@@ -205,13 +217,29 @@ const NewRegisterationForm = () => {
       <Card
         title={<CardHeader title="Update Member" />}
         extra={
-          <Form.Item
-            name="user_status"
-            valuePropName="checked"
-            style={{ marginBottom: "0px" }}
-          >
-            <Switch />
-          </Form.Item>
+          <div className="flex gap-6">
+            <Form.Item
+              name="user_card_print"
+              valuePropName="checked"
+              style={{ marginBottom: 0 }}
+            >
+              <Checkbox>Card Print</Checkbox>
+            </Form.Item>
+            <Form.Item
+              name="user_card_re_print"
+              valuePropName="checked"
+              style={{ marginBottom: 0 }}
+            >
+              <Checkbox>Card Re-Print</Checkbox>
+            </Form.Item>
+            <Form.Item
+              name="user_status"
+              valuePropName="checked"
+              style={{ marginBottom: "0px" }}
+            >
+              <Switch />
+            </Form.Item>
+          </div>
         }
       >
         <div className="grid grid-cols-3 gap-4">
@@ -387,7 +415,10 @@ const NewRegisterationForm = () => {
               </Upload>
             </div>
           </Form.Item>
-          <Form.Item label="Address" name="user_add" className="col-span-4">
+          <Form.Item label="Address" name="user_add" className="col-span-2">
+            <Input.TextArea rows={4} />
+          </Form.Item>
+          <Form.Item label="Remarks" name="user_remarks" className="col-span-1">
             <Input.TextArea rows={4} />
           </Form.Item>
         </div>
