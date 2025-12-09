@@ -24,52 +24,8 @@ import LifeMemberReport from "./pages/report/MemberReport/LifeMemberReport";
 import TrusteeMemberReport from "./pages/report/MemberReport/TrusteeMemberReport";
 import NotRegisterNotScanned from "./pages/report/NotregisteredNotScanned/NotRegisterNotScanned";
 import RegisteredNotScanned from "./pages/report/registerednotscanned/RegisteredNotScanned";
-
-// import { Route, Routes } from "react-router-dom";
-// import AppInitializer from "./components/AppInitializer";
-// import MaintenancePage from "./components/common/MaintenancePage";
-// import MemberForm from "./components/MemberList/MemberForm";
-// import ProtectedLayout from "./components/ProtectedLayout";
-// import VersionCheck from "./components/VersionCheck";
-// import ForgotPassword from "./pages/auth/ForgotPassword";
-// import SignIn from "./pages/auth/SignIn";
-// import DeliveryList from "./pages/delivery/DeliveryList";
-// import EventAttendMember from "./pages/event/EventAttendMember";
-// import EventList from "./pages/event/EventList";
-// import EvenRegisterList from "./pages/eventregister/EventRegisterList";
-// import EventDetailsPage from "./pages/eventtrack/EventDetailsPage";
-// import EventTrackList from "./pages/eventtrack/EventTrackList";
-// import GuestUserList from "./pages/guestuser/GuestUserList";
-// import GuestUserOrderForm from "./pages/guestuserorder/GuestUserOrderForm";
-// import GuestUserOrderList from "./pages/guestuserorder/GuestUserOrderList";
-// import Dashboard from "./pages/home/Dashboard";
-// import CoupleMembersPage from "./pages/member/CoupleMembersPage";
-// import LifeMembersPage from "./pages/member/LifeMembersPage";
-// import TrusteMemberPage from "./pages/member/TrusteMemberPage";
-// import NewRegisterationForm from "./pages/newRegisteration/NewRegisterationForm";
-// import NewRegisterationList from "./pages/newRegisteration/NewRegisterationList";
-// import Notification from "./pages/notification/Notification";
-// import OrderForm from "./pages/order/OrderForm";
-// import OrderList from "./pages/order/OrderList";
-// import ProductForm from "./pages/product/ProductForm";
-// import ProductList from "./pages/product/ProductList";
-// import UserPage from "./pages/profile/Profile";
-// import EventDetailsReport from "./pages/report/EventDetailsReport/EventDetailsReport";
-// import EventReport from "./pages/report/EventReport/EventReport";
-// import CoupleMemberReport from "./pages/report/MemberReport/CoupleMemberReport";
-// import LifeMemberReport from "./pages/report/MemberReport/LifeMemberReport";
-// import TrusteeMemberReport from "./pages/report/MemberReport/TrusteeMemberReport";
-// import NotRegisterNotScanned from "./pages/report/NotregisteredNotScanned/NotRegisterNotScanned";
-// import OrderReport from "./pages/report/Orderreport/Orderreport";
-// import ProductCategoryReport from "./pages/report/ProductCategoryReport/ProductCategoryReport";
-// import ProductReport from "./pages/report/ProductReport/ProductReport";
-// import RegisteredNotScanned from "./pages/report/registerednotscanned/RegisteredNotScanned";
-// import SecurityList from "./pages/security/SecurityList";
-// import SliderList from "./pages/slider/SliderList";
-// import StaffList from "./pages/staff/StaffList";
-// import UserForm from "./pages/user/UserForm";
-// import UserList from "./pages/user/UserList";
-// import WebsiteEnquiry from "./pages/websiteenquiry/WebsiteEnquiry";
+import MemberPage from "./pages/member/AllMemberPage";
+import NewRegisterationOut from "./pages/newRegisteration/NewRegisterOut";
 
 function App() {
   return (
@@ -80,7 +36,10 @@ function App() {
         <Route path="/" element={<SignIn />} />
         <Route path="/forget-password" element={<ForgotPassword />} />
         <Route path="/maintenance" element={<MaintenancePage />} />
-
+        <Route
+          path="/new-registration-form"
+          element={<NewRegisterationOut />}
+        />
         {/* Protected Routes: All other paths */}
         <Route
           path="*"
@@ -103,6 +62,7 @@ function App() {
                   path="/new-registration-form/:newId"
                   element={<NewRegisterationForm />}
                 />
+                <Route path="/member" element={<MemberPage />} />
                 <Route path="/life-member" element={<LifeMembersPage />} />
                 <Route path="/couple-member" element={<CoupleMembersPage />} />
                 <Route path="/truste-member" element={<TrusteMemberPage />} />

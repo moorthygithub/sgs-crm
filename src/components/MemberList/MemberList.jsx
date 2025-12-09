@@ -7,7 +7,7 @@ import MemberTable from "./MemberTable";
 
 const { Search } = Input;
 
-const MemberList = ({ title, userTypeFilter }) => {
+const MemberList = ({ title, userTypeFilter, membertype }) => {
   const { message } = App.useApp();
 
   const navigate = useNavigate();
@@ -24,9 +24,15 @@ const MemberList = ({ title, userTypeFilter }) => {
       url: MEMBER_DATA,
     });
     if (Array.isArray(res.data)) {
-      const filtered = res.data.filter(
-        (user) => user.user_member_type == userTypeFilter
-      );
+      // const filtered = res.data.filter(
+      //   (user) => user.user_member_type == userTypeFilter
+      // );
+      const filtered =
+        userTypeFilter !== undefined &&
+        userTypeFilter !== null &&
+        userTypeFilter !== ""
+          ? res.data.filter((user) => user.user_member_type == userTypeFilter)
+          : res.data;
       setUsers(filtered);
 
       const userImageObj = res.image_url?.find(
@@ -110,6 +116,7 @@ const MemberList = ({ title, userTypeFilter }) => {
             users={filteredUsers}
             onEdit={handleEdit}
             handleToggleStatus={handleToggleStatus}
+            membertype={membertype}
           />
         ) : (
           <div className="text-center text-gray-500 py-20">No data found.</div>
