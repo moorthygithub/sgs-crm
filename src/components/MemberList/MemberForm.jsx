@@ -161,7 +161,7 @@ const NewRegisterationForm = () => {
       });
       if (res.code == 201) {
         message.success(res.message || "Member Updated!");
-        navigate("/life-member");
+        navigate(-1);
       } else {
         message.error(res.message || "Failed to save member.");
       }
